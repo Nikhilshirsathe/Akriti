@@ -13,21 +13,26 @@ A production-ready AI Software Engineering Assistant with document intelligence,
 ## Project Structure
 
 ```text
-backend/
-|-- agents/
-|   `-- understanding_agent.py
-|-- prompts/
-|   `-- understanding_prompt.py
-|-- schemas/
-|   `-- project_schema.py
-|-- routes/
-|   `-- analyze.py
-|-- services/
-|   `-- openai_service.py
-|-- main.py
-|-- requirements.txt
-`-- .env.example
+Akriti/
+|-- backend/
+|   |-- agents/
+|   |-- prompts/
+|   |-- routes/
+|   |-- schemas/
+|   |-- services/
+|   |-- tests/
+|   |-- main.py
+|   |-- requirements.txt
+|   `-- .env.example
+|-- frontend/
+|   |-- index.html
+|   |-- styles.css
+|   `-- app.js
+|-- README.md
+`-- .gitignore
 ```
+
+The `frontend/` folder contains the Akriti web UI. FastAPI serves it at `/` and serves its assets from `/static`.
 
 ## Setup
 

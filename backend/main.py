@@ -17,6 +17,7 @@ from backend.routes.planning import router as planning_router
 from backend.routes.review import router as review_router
 
 BASE_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = BASE_DIR.parent
 load_dotenv(BASE_DIR / ".env")
 
 logging.basicConfig(
@@ -30,9 +31,9 @@ app = FastAPI(
     version="1.0.0",
 )
 
-STATIC_DIR = BASE_DIR / "static"
+FRONTEND_DIR = PROJECT_ROOT / "frontend"
 
-app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 app.include_router(analyze_router)
 app.include_router(planning_router)
 app.include_router(execute_router)
@@ -43,7 +44,7 @@ app.include_router(review_router)
 
 @app.get("/", include_in_schema=False)
 def app_ui() -> FileResponse:
-    return FileResponse(STATIC_DIR / "index.html")
+    return FileResponse(FRONTEND_DIR / "index.html")
 
 
 @app.get("/health")
